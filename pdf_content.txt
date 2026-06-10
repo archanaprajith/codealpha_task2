@@ -1,0 +1,408 @@
+--- PAGE 1 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 1
+ ■■
+ LegalEase AI
+ Micro-Engineering Project Prompt Document
+Version
+v1.0 — Initial Release
+Audience
+Product Managers, Full-Stack Engineers, AI/ML Engineers, Legal SMEs
+Jurisdiction
+Republic of India | BNS, BNSS, BSA, IT Act 2000
+AI Model
+Large Language Model (LLM) — RAG-enhanced, domain-tuned
+Modules
+5 Core Feature Modules + 2 Cross-Cutting Guardrail Modules
+Deliverable
+Production-ready AI Legal Information Assistant
+Mission: Bridge the gap between complex Indian legal frameworks and the general public by providing
+accurate, empathetic, and actionable legal information — fully grounded in the Bharatiya Nyaya Sanhita
+(BNS), BNSS, BSA, and the IT Act 2000.
+
+--- PAGE 2 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 2
+■ Table of Contents
+0
+Project Overview & Architecture
+3
+1
+Module 1 — Legal Rights Awareness
+4
+2
+Module 2 — Cybercrime Guidance
+5
+3
+Module 3 — Women's Safety & Support
+6
+4
+Module 4 — Tenant-Landlord & Compliance
+7
+5
+Module 5 — Legal Document Simplifier
+8
+6
+Cross-Cutting: Guardrails & Safety
+9
+7
+Cross-Cutting: Tone & Communication
+10
+8
+Non-Functional Requirements
+11
+9
+Deployment & Roadmap
+11
+
+--- PAGE 3 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 3
+■■ Project Overview & Architecture
+LegalEase AI is an empathetic, knowledge-intensive AI assistant built on a Retrieval-Augmented Generation
+(RAG) architecture. It ingests authoritative Indian legal corpora — BNS, BNSS, BSA, IT Act 2000, Consumer
+Protection Act 2019, POSH Act 2013, and Model Tenancy Act 2021 — and delivers plain-language legal
+awareness to Indian citizens across socioeconomic strata.
+High-Level Architecture
+Layer
+Component
+Responsibility
+Frontend
+React / Flutter Web
+Chat UI, voice input, multilingual toggle
+API Gateway
+FastAPI / Node.js
+Session mgmt, rate limiting, auth
+AI Core
+LLM + RAG Pipeline
+Intent detection, context retrieval, response synthesis
+Knowledge Base
+Vector DB (Pinecone / Weaviate)
+Chunked legal corpus with metadata
+Safety Layer
+Rule Engine + Classifiers
+Guardrails, disclaimer injection, emergency routing
+Integrations
+Govt APIs / SMS / Email
+Complaint portals, helpline triggers
+Core Design Principles
+ Accuracy-first: All responses grounded in cited legal sections — no hallucinations.
+ Empathy-by-design: Tone calibrated to reduce user anxiety and increase clarity.
+ Safety-gated: Every legal pathway response appended with a mandatory disclaimer.
+ Scalability: Stateless API design; horizontal scaling for concurrent user load.
+ Accessibility: Multilingual support (Hindi, Malayalam, Tamil, Bengali, etc.) via translation layer.
+
+--- PAGE 4 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 4
+■ Module 1 — Legal Rights Awareness
+M
+1
+Legal Rights Awareness Engine
+■ Scope
+ Consumer Rights under the Consumer Protection Act, 2019
+ Women's Statutory Rights (maternity, protection from harassment)
+ Labour & Workplace Rights (Wages Code, Industrial Disputes Act)
+ Property & Inheritance Rights (Transfer of Property Act, Hindu Succession Act)
+ Senior Citizen Welfare (Maintenance & Welfare of Parents Act, 2007)
+■■ Functional Requirements & Actions
+Step 1. Intent Classification: NLP classifier detects the legal theme from free-text input (e.g., 'My employer
+hasn't paid me' → Labour Rights).
+Step 2. Act Mapping: RAG pipeline retrieves relevant act, chapter, and section from the knowledge base (e.g.,
+Code on Wages, 2019 — Section 17 for delayed payment).
+Step 3. Rights Explanation: LLM synthesizes a jargon-free explanation of the user's statutory rights, obligations
+of the opposite party, and the remedy available.
+Step 4. Structured Output: Response is formatted with: Rights Summary | Governing Law | Steps to Enforce |
+Escalation Path.
+Step 5. Disclaimer Injection: Mandatory disclaimer appended to every response by the safety middleware.
+■ Suggested Tech Stack
+Python
+LangChain
+Pinecone
+OpenAI / Claude API
+FastAPI
+React
+■ APIs / Integrations
+ Ministry of Labour & Employment — Labour Law portal for wage grievances
+ National Consumer Disputes Redressal Commission (NCDRC) — edaakhil.nic.in API
+ National Human Rights Commission (NHRC) — complaint status webhook
+■ Acceptance Criteria
+ System correctly identifies legal theme with ≥ 90% accuracy on a 200-query benchmark.
+ Every response cites at least one specific section of the applicable Indian act.
+ Response time ≤ 4 seconds for 95th percentile of production traffic.
+ Disclaimer present in 100% of rights-explanation responses (automated test).
+■ Module 2 — Cybercrime Guidance & Complaint Assistance
+
+--- PAGE 5 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 5
+M
+2
+Cybercrime Guidance Engine
+■ Scope
+ Online Financial Fraud (UPI fraud, phishing, fake investment schemes)
+ Identity Theft & Account Takeover
+ Cyberstalking & Online Harassment
+ Ransomware, Malware & Data Extortion
+ Cyberbullying (especially targeting minors)
+■■ Functional Requirements & Actions
+Step 1. Crime Categorization: Multi-label classifier identifies cybercrime sub-type from user's narrative (supports
+overlapping categories e.g., 'phishing AND financial fraud').
+Step 2. Legal Section Mapping: Maps offense to IT Act, 2000 sections (e.g., Sec. 66C — Identity Theft, Sec.
+66D — Cheating by personation) and BNS equivalents.
+Step 3. Complaint Walkthrough: Generates a chronological, numbered guide for filing on cybercrime.gov.in —
+account creation, report category, evidence upload, acknowledgment.
+Step 4. Evidence Checklist: Dynamically generates a context-specific evidence list (bank transaction IDs, wallet
+screenshots, sender metadata, URL with timestamp).
+Step 5. 1930 Helpline Trigger: If financial fraud detected AND amount > threshold configured, surface the
+National Cyber Crime Helpline (1930) as the first priority action.
+Step 6. Follow-Up Tracking: Generate a reference ID checklist template for the user to track their complaint
+status on the portal.
+■ Suggested Tech Stack
+Python
+spaCy NER
+LangChain RAG
+Redis (session)
+FastAPI
+Twilio (SMS)
+■ APIs / Integrations
+ National Cyber Crime Reporting Portal — cybercrime.gov.in (deep-link generation)
+ RBI DAKSH Portal — for banking fraud escalation
+ TRAI DND / SMS alert system for fraud number verification
+■ Acceptance Criteria
+ Cybercrime type correctly classified for ≥ 88% of test cases across 6 crime categories.
+ Complaint walkthrough covers all mandatory steps verified against cybercrime.gov.in live flow.
+ Evidence checklist is dynamically tailored — no generic lists (validated by legal SME).
+ 1930 helpline surfaces within top 2 elements for any financial fraud query.
+■■ Module 3 — Women's Safety & Legal Support
+
+--- PAGE 6 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 6
+M
+3
+Women's Safety & Emergency Legal Response
+■ Scope
+ Domestic Violence — Protection of Women from Domestic Violence Act, 2005
+ Workplace Sexual Harassment — POSH Act, 2013 (Sexual Harassment of Women at Workplace Act)
+ Cyberstalking targeting women — IT Act Sec. 66A / BNS provisions
+ Emergency Protection Orders & Shelter access
+ NCW Complaint Filing & District Protection Officer access
+■■ Functional Requirements & Actions
+Step 1. Danger Signal Detection: Sentiment & keyword classifier flags physical-danger indicators ('hitting me',
+'afraid to go home', 'threatening') and routes to EMERGENCY MODE.
+Step 2. Emergency Header: In EMERGENCY MODE, response begins with verified helpline numbers (112,
+1091, 181) BEFORE any legal information — non-negotiable UX rule.
+Step 3. Zero FIR Guidance: Explains BNSS provision for Zero FIR — any police station must register,
+regardless of jurisdiction — with step-by-step filing instructions.
+Step 4. Protection Officer Locator: Integrates district Protection Officer directory (Ministry of Women & Child
+Development data) to surface nearest officer.
+Step 5. POSH Complaint Flow: For workplace harassment, explains ICC (Internal Complaints Committee)
+obligation, 90-day filing window, and escalation to LCC if no ICC exists.
+Step 6. NCW Filing Assistance: Guides user through ncwapps.nic.in online complaint form with required
+document checklist.
+Step 7. Safe Language Protocol: Responses avoid re-traumatizing language; use trauma-informed
+communication patterns reviewed by licensed counsellors.
+■ Suggested Tech Stack
+Python
+BERT Sentiment
+LangChain
+Google Maps API
+FastAPI
+Flutter
+■ APIs / Integrations
+ Ministry of Women & Child Development — Protection Officer directory API
+ NCW Online Complaint Portal — ncwapps.nic.in
+ 112 India Emergency App — deep-link for SOS trigger
+ iCall / Vandrevala Foundation — counselling referral API
+■ Acceptance Criteria
+ Danger detection recall ≥ 95% on annotated test set (zero tolerance for false negatives).
+ Emergency helpline numbers appear BEFORE legal content in 100% of flagged responses.
+ POSH flow covers all 7 mandatory ICC steps per Act Schedule.
+
+--- PAGE 7 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 7
+ Zero FIR explanation validated as legally accurate by empanelled lawyer.
+ All response text passes trauma-informed language audit with < 2 flagged phrases per 100.
+■ Module 4 — Tenant-Landlord & Basic Compliance
+M
+4
+Tenant-Landlord Disputes & Business Compliance
+■ Scope
+ Rental Disputes — Model Tenancy Act 2021 & state-specific Rent Control Acts
+ Security Deposit Rules — cap limits, return timelines, deduction rights
+ Eviction Procedures — notice periods, grounds, and due process
+ Startup Compliance Checklist — GST registration, Trademark, Company incorporation basics
+ Consumer rights for homebuyers under RERA (Real Estate Regulation Act)
+■■ Functional Requirements & Actions
+Step 1. State Detection: Infer or ask user's state to apply correct Rent Control Act (e.g., Maharashtra Rent
+Control Act vs Delhi Rent Act vs MTA 2021 defaults).
+Step 2. Issue Classification: Identify dispute type — deposit withholding, illegal eviction, rent increase dispute,
+maintenance non-compliance — and surface specific provisions.
+Step 3. Security Deposit Calculator: Interactive module — input monthly rent → output permissible deposit cap
+under applicable state law + interest entitlement formula.
+Step 4. Notice Period Guide: Explain mandatory notice periods for both landlord and tenant across common
+scenarios (non-payment, lease expiry, sale of property).
+Step 5. Eviction Rights Explainer: Clarify grounds under which landlord CAN and CANNOT evict; explain
+self-help eviction prohibition and legal remedy via Rent Authority.
+Step 6. Business Compliance Checklist: Generate role-specific compliance checklist (Sole Proprietor / LLP / Pvt
+Ltd) covering GST, PAN, TAN, Trademark, Shops Act.
+Step 7. RERA Complaint Path: For homebuyer disputes, guide to state RERA portal complaint registration with
+required documents list.
+■ Suggested Tech Stack
+Python
+LangChain
+PostgreSQL (state law DB)
+FastAPI
+React
+Chart.js
+■ APIs / Integrations
+ State RERA portals (dynamic URL mapping per state)
+ MCA21 Portal — company incorporation status verification
+ GST Portal — gstin.gov.in for registration status check
+ IP India — trademark search API
+
+--- PAGE 8 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 8
+■ Acceptance Criteria
+ State-law selection correctly applied for all 29 states + 8 UTs in test matrix.
+ Security deposit calculator output matches manual legal calculation for 100 test cases.
+ Business compliance checklist covers all mandatory registrations for each entity type.
+ RERA complaint path includes correct portal URL for ≥ 25 states.
+■ Module 5 — Legal Document Simplifier
+M
+5
+Legal Document Simplifier & Risk Analyzer
+■ Scope
+ Rental Agreements — lease deed analysis, clause-by-clause breakdown
+ Employment Contracts — probation terms, notice pay, IP assignment clauses
+ Non-Disclosure Agreements (NDAs) — scope, duration, carve-outs, penalties
+ Service Agreements & SaaS Terms — liability caps, SLA, data ownership
+ Basic Affidavits — format validation and content explanation
+■■ Functional Requirements & Actions
+Step 1. Document Ingestion: Accept PDF / DOCX / pasted text. Parse and chunk document into logical clause
+segments using structural NLP (heading detection + boundary rules).
+Step 2. Clause Classification: Tag each clause by type — Payment, Termination, Penalty, Confidentiality,
+Jurisdiction, IP Assignment, Indemnity, Limitation of Liability.
+Step 3. Plain-English Translation: For each clause, generate a ≤ 3-sentence plain summary explaining 'what this
+means for YOU' in non-legal language.
+Step 4. Obligation Extraction: Structured output of WHO owes WHAT by WHEN — two columns: 'Your
+Obligations' and 'Their Obligations'.
+Step 5. Risk Flag Engine: Automated detection of high-risk patterns — extreme penalty clauses (> 5x contract
+value), unilateral termination without notice, perpetual IP assignment, jurisdiction in distant/inconvenient court,
+auto-renewal without notification.
+Step 6. Risk Scoring Dashboard: Visual risk summary — Green (standard) / Amber (review) / Red (negotiate or
+reject) — for each clause category.
+Step 7. Negotiation Tips: For each Red-flagged clause, suggest a standard market-norm counter-clause
+language the user can propose.
+■ Suggested Tech Stack
+Python
+pdfplumber
+spaCy
+LangChain
+LLM API
+React
+D3.js
+■ APIs / Integrations
+ No external govt APIs required for core module
+
+--- PAGE 9 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 9
+ Optional: Bar Council of India — lawyer referral for flagged documents
+ DocuSign API — for e-signature after review (Phase 2)
+■ Acceptance Criteria
+ Clause segmentation correctly identifies ≥ 92% of clause boundaries in 50 test contracts.
+ Plain-English summaries rated 'clear' or 'very clear' by ≥ 85% of lay-user test panel.
+ Risk flag engine identifies all 6 high-risk pattern types in seeded test documents.
+ Obligation extraction produces zero false attributions in 30 dual-party agreement tests.
+■■ Cross-Cutting Module — Guardrails & Safety
+All 5 feature modules share a centralized Safety & Guardrail Middleware layer. This layer is non-bypassable and
+runs as a post-processing step on every LLM response before it is returned to the user.
+Guardrail
+Trigger Condition
+Action
+Mandatory Disclaimer
+Any response containing legal pathways, act sections, or procedure guides
+Append standardized disclaimer text — 100% coverage enforced by automated test
+No Case Outcome Prediction
+LLM output contains phrases like 'you will win', 'guaranteed refund', 'court will decide in your favor'
+Block response, regenerate with instruction: 'Focus on process, not outcome'
+Emergency Interception
+Danger keywords detected (domestic violence escalation, active extortion, suicidal ideation)
+Prepend verified helpline block (112, 1930, 1091, iCall) before all other content
+Hallucination Guard
+LLM cites a section not found in the RAG-retrieved context
+Flag for review; replace with: 'Please consult a legal professional for this specific query'
+PII Redaction
+Response accidentally echoes user-provided PAN, Aadhaar, phone, or bank numbers
+Regex + NER scrubber masks sensitive data before delivery
+Standard Disclaimer Text (Injected Verbatim)
+Disclaimer: LegalEase AI is an AI legal information assistant, not a lawyer. This information is for educational
+purposes and awareness under Indian law. For formal legal advice, please consult a registered legal professional.
+
+--- PAGE 10 ---
+LegalEase AI — Micro-Engineering Project Document  |  Confidential
+Page 10
+■ Non-Functional Requirements
+Category
+Requirement
+Target
+Performance
+P95 API response time
+≤ 4 seconds
+Availability
+Uptime SLA
+99.5% monthly
+Scalability
+Concurrent users (peak)
+10,000 CCU
+Accuracy
+Legal citation accuracy (human eval)
+≥ 90%
+Safety
+Emergency interception recall
+≥ 99% (zero-miss policy)
+Privacy
+PII in logs
+Zero — redacted at gateway
+Accessibility
+WCAG 2.1 compliance level
+AA
+Multilingual
+Supported Indian languages at launch
+Hindi, Malayalam, Tamil, Bengali
+Audit
+Response logging for legal review
+100% with 90-day retention
+Security
+Penetration test cadence
+Quarterly  |  OWASP Top 10
+■■ Deployment Roadmap
+Phase
+Duration
+Deliverables
+Phase 0 — Foundation
+Weeks 1–2
+Legal corpus ingestion, vector DB setup, RAG baseline, intent classifier v1
+Phase 1 — Core Modules
+Weeks 3–6
+M1 (Rights), M2 (Cyber), M3 (Women's Safety) — functional + tested
+Phase 2 — Extended
+Weeks 7–9
+M4 (Tenant), M5 (Document Simplifier) — full feature + risk engine
+Phase 3 — Safety Layer
+Week 10
+All guardrails live, PII redaction, emergency interception QA
+Phase 4 — Multilingual
+Weeks 11–12
+Hindi + Malayalam translation layer, regional legal nuance tuning
+Phase 5 — Hardening
+Weeks 13–14
+Load testing, security pentest, legal SME audit, WCAG audit
+Phase 6 — GA Launch
+Week 15
+Production deployment, monitoring dashboards, user feedback loop
+
