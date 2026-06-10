@@ -1,0 +1,42 @@
+[
+    {
+        "question": "What is Python?",
+        "answer": "Python is a high-level, interpreted programming language known for its simplicity and readability. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming."
+    },
+    {
+        "question": "What are the key features of Python?",
+        "answer": "Key features of Python include its easy-to-read syntax, dynamic typing, interpreted nature, extensive standard library, and support for multiple programming paradigms."
+    },
+    {
+        "question": "How do I install Python?",
+        "answer": "You can download the Python installer from the official website (python.org) and run it. Make sure to check the box 'Add Python to PATH' during installation."
+    },
+    {
+        "question": "What is a list in Python?",
+        "answer": "A list in Python is an ordered, mutable collection of items. It can hold elements of different data types and allows duplicate values."
+    },
+    {
+        "question": "What is the difference between a list and a tuple?",
+        "answer": "The main difference is that lists are mutable (can be changed after creation), while tuples are immutable (cannot be modified once created). Lists use square brackets [], whereas tuples use parentheses ()."
+    },
+    {
+        "question": "What is a dictionary in Python?",
+        "answer": "A dictionary is an unordered, mutable collection of key-value pairs. Keys must be unique and immutable, while values can be of any data type."
+    },
+    {
+        "question": "How do you handle exceptions in Python?",
+        "answer": "Exceptions in Python are handled using try, except, finally, and else blocks. Code that might raise an exception is placed in the try block, and the error handling is written in the except block."
+    },
+    {
+        "question": "What are Python decorators?",
+        "answer": "Decorators are a very powerful and useful tool in Python that allows programmers to modify the behavior of a function or class without permanently modifying it. They wrap another function to extend its behavior."
+    },
+    {
+        "question": "What is a lambda function?",
+        "answer": "A lambda function is a small, anonymous inline function defined with the lambda keyword. It can take any number of arguments but can only have one expression."
+    },
+    {
+        "question": "How do I open and read a file in Python?",
+        "answer": "You can use the built-in open() function. It's recommended to use the 'with' statement so the file is properly closed automatically: \nwith open('filename.txt', 'r') as f:\n  data = f.read()"
+    }
+]

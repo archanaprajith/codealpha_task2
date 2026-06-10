@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase AI — Legal Intelligence for India</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Left Sidebar (NyayGuru Styled) -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="logo-text">
+                    <h1>LegalEase AI</h1>
+                    <span>Legal Intelligence for India</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-tab="dashboard-tab">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="module1">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Rights Awareness</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="module2">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Cybercrime Guidance</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="module3" id="nav-safety">
+                    <i class="fa-solid fa-person-dress-burst"></i>
+                    <span>Women's Safety</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="module4">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                    <span>Tenancy & Compliance</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="module5">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Doc Simplifier</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item collapse-btn" id="sidebar-collapse">
+                    <i class="fa-solid fa-angles-left"></i>
+                    <span>Collapse</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-viewport">
+            
+            <!-- NyayGuru Styled Top Header -->
+            <header class="app-header">
+                <div class="header-search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search chats, docs, notes... (Ctrl+K)" id="global-search-input">
+                </div>
+                
+                <div class="header-actions">
+                    <div class="stat-pill"><i class="fa-solid fa-bolt"></i> 100 left</div>
+                    <div class="lang-selector"><i class="fa-solid fa-globe"></i> <span>EN</span></div>
+                    <button class="theme-toggle" id="guardrail-toggle-btn" title="Toggle Guardrail Console">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </button>
+                    <div class="user-avatar">
+                        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=legalease" alt="Avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tab Panels -->
+            <div class="tab-content-container">
+
+                <!-- Dashboard Tab (Overview & Shortcuts) -->
+                <section class="tab-panel active" id="dashboard-tab">
+                    <div class="welcome-banner">
+                        <div class="welcome-text">
+                            <h2>Good afternoon, Citizen! <span class="free-badge">Free</span></h2>
+                            <p>Welcome to your LegalEase AI dashboard. Ask any legal question about Indian law and get instant AI-powered guidance.</p>
+                        </div>
+                        <div class="welcome-stats">
+                            <div class="mini-stat">
+                                <h3>5 / 5</h3>
+                                <span>Active Engines</span>
+                            </div>
+                            <div class="mini-stat">
+                                <h3>Active</h3>
+                                <span>Safety Gateway</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics grid modeled exactly on Screenshot 3 -->
+                    <div class="dashboard-stats-grid">
+                        <div class="d-stat-card">
+                            <div class="d-stat-left">
+                                <span class="d-stat-num">5</span>
+                                <span class="d-stat-name">Total Chats</span>
+                            </div>
+                            <span class="d-stat-icon chat-d-icon"><i class="fa-regular fa-comments"></i></span>
+                        </div>
+                        <div class="d-stat-card">
+                            <div class="d-stat-left">
+                                <span class="d-stat-num">1</span>
+                                <span class="d-stat-name">Documents</span>
+                            </div>
+                            <span class="d-stat-icon doc-d-icon"><i class="fa-regular fa-file"></i></span>
+                        </div>
+                        <div class="d-stat-card">
+                            <div class="d-stat-left">
+                                <span class="d-stat-num">3</span>
+                                <span class="d-stat-name">Notes</span>
+                            </div>
+                            <span class="d-stat-icon note-d-icon"><i class="fa-regular fa-pen-to-square"></i></span>
+                        </div>
+                        <div class="d-stat-card">
+                            <div class="d-stat-left">
+                                <span class="d-stat-num">0 / 100 MB</span>
+                                <span class="d-stat-name">Storage</span>
+                            </div>
+                            <span class="d-stat-icon storage-d-icon"><i class="fa-solid fa-hard-drive"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Legal Tip of the Day Banner -->
+                    <div class="tip-of-day-banner">
+                        <span class="tip-bulb-icon"><i class="fa-regular fa-lightbulb"></i></span>
+                        <div class="tip-text">
+                            <strong>Legal Tip of the Day</strong>
+                            <p>Cheque bounce cases under Section 138 NI Act must be filed within 30 days of cause of action.</p>
+                        </div>
+                        <button class="close-tip-btn"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="shortcut-card" data-goto="module1">
+                            <div class="shortcut-icon"><i class="fa-solid fa-comments"></i></div>
+                            <h4>Rights Awareness</h4>
+                            <p>Consult with the NLP bot regarding wages, inheritance, or consumer issues.</p>
+                        </div>
+                        <div class="shortcut-card" data-goto="module2">
+                            <div class="shortcut-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h4>Cybercrime Guidance</h4>
+                            <p>Generate evidence checklists and filing guides for financial scams.</p>
+                        </div>
+                        <div class="shortcut-card" data-goto="module3">
+                            <div class="shortcut-icon"><i class="fa-solid fa-person-dress-burst"></i></div>
+                            <h4>Women's Safety</h4>
+                            <p>Zero FIR guidance, emergency numbers, and POSH Act resources.</p>
+                        </div>
+                        <div class="shortcut-card" data-goto="module4">
+                            <div class="shortcut-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
+                            <h4>Tenancy & Compliance</h4>
+                            <p>Rent deposit cap calculator and corporate compliance trackers.</p>
+                        </div>
+                        <div class="shortcut-card" data-goto="module5">
+                            <div class="shortcut-icon"><i class="fa-solid fa-folder-open"></i></div>
+                            <h4>Doc Simplifier</h4>
+                            <p>Upload leases or NDAs to score risks and translate legal jargon.</p>
+                        </div>
+                    </div>
+
+                    <!-- Integrated General Dashboard Chatbot -->
+                    <div class="dashboard-chat-sec">
+                        <h3 class="sec-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Consult General Legal AI</h3>
+                        
+                        <div class="legal-chatbot-block" data-module="rights">
+                            <div class="chatbot-messages" id="chat-messages-general">
+                                <div class="message bot">
+                                    <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="message-bubble-wrapper">
+                                        <div class="message-bubble">Hello! I am your general LegalEase AI assistant. Grounded in BNS, BNSS, BSA, and IT Act. Ask me any general legal query!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chatbot-input-container">
+                                <textarea class="chatbot-textarea" placeholder="Ask general Indian law..." rows="1"></textarea>
+                                <div class="chatbot-footer-actions">
+                                    <div class="actions-left">
+                                        <button class="action-icon-btn" title="Attach Document"><i class="fa-solid fa-paperclip"></i></button>
+                                        <button class="action-icon-btn" title="Toggle Guidelines"><i class="fa-solid fa-sliders"></i></button>
+                                        <span class="tokens-pill">10/10</span>
+                                        <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                    </div>
+                                    <div class="actions-right">
+                                        <button class="action-icon-btn mic-btn" title="Voice Input"><i class="fa-solid fa-microphone"></i></button>
+                                        <button class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rights Awareness (Chatbot Tab Panel) -->
+                <section class="tab-panel" id="module1">
+                    <div class="panel-header-desc">
+                        <h2>Rights Awareness</h2>
+                        <p>Consult with our dedicated Rights bot specifically about consumer protection, employment wages, inheritance, or land disputes.</p>
+                    </div>
+
+                    <div class="rights-chat-box-area">
+                        <div class="legal-chatbot-block" data-module="rights">
+                            
+                            <div class="chatbot-heading-hero">
+                                <div class="spark-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <h3>Hello, how can I help you today?</h3>
+                                <span>Ask me about Indian law, case citations, or legal rights guidance.</span>
+                            </div>
+
+                            <div class="chatbot-messages" id="chat-messages-rights">
+                                <div class="message bot">
+                                    <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="message-bubble-wrapper">
+                                        <div class="message-bubble">Welcome! I'm your dedicated **Rights Awareness** chatbot. Ask me about labour law disputes, consumer refunds, or property ownership sections.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Prompt suggestion chips right above input -->
+                            <div class="chat-chips-container">
+                                <button class="suggest-chip" data-query="What are my rights if a shopkeeper sells me a defective phone and refuses refund?">What are my consumer rights?</button>
+                                <button class="suggest-chip" data-query="My boss has not paid my salary this month, what is the legal time limit?">Employer withholding salary</button>
+                                <button class="suggest-chip" data-query="What is the legal limit for security deposits for a rented flat under the Model Tenancy Act?">Security deposit limit</button>
+                            </div>
+
+                            <div class="chatbot-input-container">
+                                <textarea class="chatbot-textarea" placeholder="Ask Rights Awareness Legal AI..." rows="1"></textarea>
+                                <div class="chatbot-footer-actions">
+                                    <div class="actions-left">
+                                        <button class="action-icon-btn" title="Attach Document"><i class="fa-solid fa-paperclip"></i></button>
+                                        <button class="action-icon-btn" title="Toggle Guidelines"><i class="fa-solid fa-sliders"></i></button>
+                                        <span class="tokens-pill">10/10</span>
+                                        <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                    </div>
+                                    <div class="actions-right">
+                                        <button class="action-icon-btn mic-btn" title="Voice Input"><i class="fa-solid fa-microphone"></i></button>
+                                        <button class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cybercrime Guidance (Tab Panel) -->
+                <section class="tab-panel" id="module2">
+                    <div class="panel-header-desc">
+                        <h2>Cybercrime Guidance</h2>
+                        <p>Select your cybercrime category to generate legal section mapping, dynamic evidence checklists, and precise steps to file online complaints.</p>
+                    </div>
+
+                    <div class="cyber-emergency-banner">
+                        <div class="banner-icon"><i class="fa-solid fa-phone-flip"></i></div>
+                        <div class="banner-text">
+                            <h3>National Cyber Crime Helpline: 1930</h3>
+                            <p>For immediate banking frauds or financial cybercrimes, dial 1930 within the first golden hour to freeze funds!</p>
+                        </div>
+                        <a href="tel:1930" class="banner-call-btn">Call 1930</a>
+                    </div>
+
+                    <div class="cyber-categories">
+                        <div class="cyber-card" data-crime="upi">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                            <h4>UPI & Financial Fraud</h4>
+                            <span>Phishing links, account hacks</span>
+                        </div>
+                        <div class="cyber-card" data-crime="phishing">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                            <h4>Phishing Website</h4>
+                            <span>Fake bank portal, malicious URLs</span>
+                        </div>
+                        <div class="cyber-card" data-crime="identity_theft">
+                            <i class="fa-solid fa-user-ninja"></i>
+                            <h4>Identity Theft</h4>
+                            <span>Impersonation, fake profiles</span>
+                        </div>
+                        <div class="cyber-card" data-crime="extortion">
+                            <i class="fa-solid fa-key"></i>
+                            <h4>Ransomware & Extortion</h4>
+                            <span>Locked systems, active blackmail</span>
+                        </div>
+                    </div>
+
+                    <div class="cyber-output-grid" id="cyber-output" style="display: none;">
+                        <div class="output-box evidence-box">
+                            <h3><i class="fa-solid fa-list-check"></i> Required Evidence Checklist</h3>
+                            <ul id="cyber-evidence-list"></ul>
+                        </div>
+                        <div class="output-box steps-box">
+                            <h3><i class="fa-solid fa-circle-nodes"></i> Steps to file on cybercrime.gov.in</h3>
+                            <ol id="cyber-steps-list"></ol>
+                            <div class="governing-callout">
+                                <strong>Applicable Sections:</strong> <span id="cyber-sections-span">Section 66D IT Act</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cybercrime Specific Chatbot -->
+                    <div class="sub-section-chatbot">
+                        <h3 class="sec-title"><i class="fa-solid fa-shield-halved"></i> Cyber Crime Forensic Chat Assistant</h3>
+                        <div class="legal-chatbot-block" data-module="cybercrime">
+                            <div class="chatbot-messages" id="chat-messages-cybercrime">
+                                <div class="message bot">
+                                    <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="message-bubble-wrapper">
+                                        <div class="message-bubble">Hello! I am your specialised **Cybercrime Guidance** bot. Tell me what scam occurred (e.g. "I got a phishing message" or "my UPI got hacked") and I will generate an active legal guide.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chatbot-input-container">
+                                <textarea class="chatbot-textarea" placeholder="Describe the cybercrime issue..." rows="1"></textarea>
+                                <div class="chatbot-footer-actions">
+                                    <div class="actions-left">
+                                        <button class="action-icon-btn"><i class="fa-solid fa-paperclip"></i></button>
+                                        <button class="action-icon-btn"><i class="fa-solid fa-sliders"></i></button>
+                                        <span class="tokens-pill">10/10</span>
+                                        <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                    </div>
+                                    <div class="actions-right">
+                                        <button class="action-icon-btn mic-btn"><i class="fa-solid fa-microphone"></i></button>
+                                        <button class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Women's Safety & Legal Support (Tab Panel) -->
+                <section class="tab-panel" id="module3">
+                    <div class="panel-header-desc">
+                        <h2>Women's Safety & Legal Support</h2>
+                        <p>Access emergency protocols, Zero FIR filing explanations under the BNSS, and legal protection procedures for sexual harassment (POSH Act).</p>
+                    </div>
+
+                    <div class="emergency-alert-block" id="emergency-alert" style="display: none;">
+                        <div class="alert-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <h3>EMERGENCY MODE ACTIVATED — DANGER DETECTED</h3>
+                        </div>
+                        <p>We detected keywords indicating physical threat, abuse, or imminent danger. Please call emergency services immediately!</p>
+                        <div class="emergency-helpline-grid">
+                            <div class="hl-card red-hl">
+                                <span>National Emergency Number</span>
+                                <h4>112</h4>
+                            </div>
+                            <div class="hl-card pink-hl">
+                                <span>Women Helpline</span>
+                                <h4>1091</h4>
+                            </div>
+                            <div class="hl-card purple-hl">
+                                <span>Domestic Abuse Helpline</span>
+                                <h4>181</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="safety-grid">
+                        <div class="safety-card">
+                            <h3><i class="fa-solid fa-file-shield"></i> Zero FIR Guide (Section 173 BNSS)</h3>
+                            <p>Under the Bharatiya Nagarik Suraksha Sanhita (BNSS), a victim of crime can file an FIR at <strong>any</strong> police station, regardless of the crime location.</p>
+                            <div class="flow-steps">
+                                <div class="flow-step">
+                                    <div class="step-num">1</div>
+                                    <p>Go to the nearest police station (regardless of jurisdiction).</p>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-num">2</div>
+                                    <p>State that you wish to file a <strong>Zero FIR</strong>.</p>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-num">3</div>
+                                    <p>The police <strong>must</strong> write the complaint and assign a serial number starting with '0'.</p>
+                                </div>
+                                <div class="flow-step">
+                                    <div class="step-num">4</div>
+                                    <p>The station will transfer the case to the appropriate jurisdiction for active investigation.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="safety-card">
+                            <h3><i class="fa-solid fa-building-shield"></i> POSH Act, 2013 (Workplace Harassment)</h3>
+                            <p>Legal safeguards and compliance schedule for sexual harassment complaints at workplaces:</p>
+                            <table class="posh-schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Requirement</th>
+                                        <th>Mandated Timeline / Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ICC Constitution</strong></td>
+                                        <td>Mandatory for every office/organization with 10+ employees.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Filing Window</strong></td>
+                                        <td>Complaint must be filed in writing within <strong>3 months</strong> of the incident.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Inquiry Period</strong></td>
+                                        <td>Must be completed by the ICC within a strict window of <strong>90 days</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Action / Appeal</strong></td>
+                                        <td>Action must be taken within 60 days of report. Appeal allowed within 90 days.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="govt-portal-link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> File online on Central Ministry Portal: <a href="https://shebox.wcd.gov.in/" target="_blank">SHe-Box Portal</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Women's Safety Specific Chatbot -->
+                    <div class="sub-section-chatbot">
+                        <h3 class="sec-title" style="color: var(--danger);"><i class="fa-solid fa-person-dress-burst"></i> Women's Safety & Domestic Abuse Chat Assistant</h3>
+                        <div class="legal-chatbot-block" data-module="safety">
+                            <div class="chatbot-messages" id="chat-messages-safety">
+                                <div class="message bot">
+                                    <div class="message-avatar" style="background: linear-gradient(135deg, var(--danger), #b91c1c);"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="message-bubble-wrapper">
+                                        <div class="message-bubble">Hello. I am your specialized **Women's Safety** chatbot. I provide completely confidential, empathetic legal advice regarding workplace harassment (POSH), Zero FIR guidelines, or domestic violence remedies. If you are in severe danger, emergency numbers will immediately trigger.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chatbot-input-container">
+                                <textarea class="chatbot-textarea" placeholder="Ask confidentially about domestic or workplace safety..." rows="1"></textarea>
+                                <div class="chatbot-footer-actions">
+                                    <div class="actions-left">
+                                        <button class="action-icon-btn"><i class="fa-solid fa-paperclip"></i></button>
+                                        <button class="action-icon-btn"><i class="fa-solid fa-sliders"></i></button>
+                                        <span class="tokens-pill">10/10</span>
+                                        <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                    </div>
+                                    <div class="actions-right">
+                                        <button class="action-icon-btn mic-btn"><i class="fa-solid fa-microphone"></i></button>
+                                        <button class="chatbot-send-btn" style="background: linear-gradient(135deg, var(--danger), #b91c1c);"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tenancy & Compliance (Tab Panel) -->
+                <section class="tab-panel" id="module4">
+                    <div class="panel-header-desc">
+                        <h2>Tenancy & Compliance</h2>
+                        <p>Calculate legal rental deposit caps under the Model Tenancy Act 2021, explore eviction procedures, and generate startup compliance checklists.</p>
+                    </div>
+
+                    <div class="tenancy-grid">
+                        <div class="compliance-card">
+                            <h3><i class="fa-solid fa-calculator"></i> Security Deposit Cap Calculator</h3>
+                            <p>Verify if your landlord is withholding an illegal security deposit under state-specific laws and the Model Tenancy Act, 2021.</p>
+                            
+                            <div class="calc-form">
+                                <div class="input-group">
+                                    <label for="monthly-rent">Monthly Rent (₹)</label>
+                                    <input type="number" id="monthly-rent" value="25000" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="state-selector">Applicable State / UT</label>
+                                    <select id="state-selector">
+                                        <option value="karnataka">Karnataka (Model Tenancy Guidelines)</option>
+                                        <option value="delhi">Delhi</option>
+                                        <option value="maharashtra">Maharashtra</option>
+                                        <option value="tamilnadu">Tamil Nadu</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-radio">
+                                    <label>Premises Type:</label>
+                                    <div class="radio-row">
+                                        <label><input type="radio" name="premise-type" value="residential" checked> Residential (Home)</label>
+                                        <label><input type="radio" name="premise-type" value="commercial"> Commercial (Office)</label>
+                                    </div>
+                                </div>
+                                <button id="calc-btn" class="calc-action-btn">Calculate Legal Cap</button>
+                            </div>
+
+                            <div class="calc-result" id="calc-result-box" style="display: none;">
+                                <div class="result-row">
+                                    <span>Rent Cap Limit:</span>
+                                    <strong id="res-months-cap">2 Months</strong>
+                                </div>
+                                <div class="result-row highlighted-row">
+                                    <span>Maximum Legal Deposit:</span>
+                                    <strong id="res-max-deposit">₹ 50,000</strong>
+                                </div>
+                                <p class="result-note" id="res-state-note">Karnataka follows MTA capping residential deposits to 2 months rent.</p>
+                            </div>
+                        </div>
+
+                        <div class="compliance-card">
+                            <h3><i class="fa-solid fa-business-time"></i> Startup Compliance Checklist</h3>
+                            <p>Generate essential legal checklists for incorporating and running business entities in India.</p>
+                            
+                            <div class="entity-selector">
+                                <button class="entity-btn active" data-entity="sole">Sole Proprietorship</button>
+                                <button class="entity-btn" data-entity="llp">LLP (Limited Liability Partnership)</button>
+                                <button class="entity-btn" data-entity="pvt">Pvt Ltd Company</button>
+                            </div>
+
+                            <div class="compliance-checklist-list" id="compliance-checklist"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tenancy & Compliance Specific Chatbot -->
+                    <div class="sub-section-chatbot">
+                        <h3 class="sec-title"><i class="fa-solid fa-house-chimney-user"></i> Tenancy & Startup Compliance Chat Assistant</h3>
+                        <div class="legal-chatbot-block" data-module="tenancy">
+                            <div class="chatbot-messages" id="chat-messages-tenancy">
+                                <div class="message bot">
+                                    <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                                    <div class="message-bubble-wrapper">
+                                        <div class="message-bubble">Hello! I am your **Tenancy & Startup Compliance** chat assistant. Ask me questions about security deposit withholding, notice period guidelines, or corporate incorporation files (GST, LLP deeds, SPICe+)!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chatbot-input-container">
+                                <textarea class="chatbot-textarea" placeholder="Ask about rental guidelines or corporate compliance..." rows="1"></textarea>
+                                <div class="chatbot-footer-actions">
+                                    <div class="actions-left">
+                                        <button class="action-icon-btn"><i class="fa-solid fa-paperclip"></i></button>
+                                        <button class="action-icon-btn"><i class="fa-solid fa-sliders"></i></button>
+                                        <span class="tokens-pill">10/10</span>
+                                        <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                    </div>
+                                    <div class="actions-right">
+                                        <button class="action-icon-btn mic-btn"><i class="fa-solid fa-microphone"></i></button>
+                                        <button class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Document Simplifier (My Docs Tab Panel) -->
+                <section class="tab-panel" id="module5">
+                    <div class="my-docs-header">
+                        <div class="header-left">
+                            <h2>My Documents</h2>
+                            <span>Upload and organise your legal documents</span>
+                        </div>
+                        <div class="header-right">
+                            <span class="upload-stat">10 uploads remaining under your Free plan. <a href="#">Upgrade</a></span>
+                            <div class="action-btn-row">
+                                <button class="upload-btn" id="nyay-upload-trigger"><i class="fa-solid fa-arrow-up-from-bracket"></i> Upload</button>
+                                <button class="collection-btn"><i class="fa-solid fa-folder-plus"></i> New Collection</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-docs-search-row">
+                        <div class="search-files-container">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search files...">
+                        </div>
+                        <select class="collection-select">
+                            <option>All Collections</option>
+                        </select>
+                        <select class="date-select">
+                            <option>Date: Newest</option>
+                        </select>
+                        <div class="view-toggles">
+                            <button class="view-toggle-btn active"><i class="fa-solid fa-list"></i></button>
+                            <button class="view-toggle-btn"><i class="fa-solid fa-table-cells-large"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="my-docs-body-layout">
+                        
+                        <!-- Left Main Body (Empty State / Analyzed View) -->
+                        <div class="docs-main-container">
+                            
+                            <!-- EMPTY STATE: Upload document view -->
+                            <div class="empty-state-box" id="docs-empty-state">
+                                <div class="empty-icon"><i class="fa-regular fa-file-pdf"></i></div>
+                                <h3>No files yet</h3>
+                                <p>Upload your first document to get started</p>
+                                <button class="primary-upload-btn" id="primary-upload-btn">Upload Document</button>
+                                
+                                <div class="paste-fallback-row">
+                                    <span>Or paste your contract clauses directly below:</span>
+                                    <textarea id="doc-text-input" placeholder="Paste lease clauses, NDA terms, or employment contracts here..."></textarea>
+                                    <div class="paste-actions">
+                                        <button class="sample-btn" id="load-sample-lease">Load Sample Lease</button>
+                                        <button class="sample-btn" id="load-sample-nda">Load Sample NDA</button>
+                                        <button class="analyze-btn" id="simplify-btn">Analyze Document</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ANALYZED DASHBOARD VIEW -->
+                            <div class="simplifier-dashboard" id="simplify-dashboard" style="display: none;">
+                                <button class="back-to-docs-btn" id="back-to-docs"><i class="fa-solid fa-chevron-left"></i> Back to Documents</button>
+                                
+                                <div class="dashboard-section risk-meter-sec">
+                                    <h3><i class="fa-solid fa-gauge-high"></i> Clause-by-Clause Risk Breakdown</h3>
+                                    <div class="clause-analysis-container" id="clause-list-output"></div>
+                                </div>
+
+                                <div class="dashboard-section obligations-sec">
+                                    <h3><i class="fa-solid fa-table-list"></i> Obligations Matrix (Who Owes What)</h3>
+                                    <div class="obligations-table-wrapper">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Party</th>
+                                                    <th>Statutory & Agreed Responsibilities</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="obligations-tbody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Document Context Interactive Chatbot -->
+                                <div class="dashboard-section contract-chatbot-sec">
+                                    <h3><i class="fa-solid fa-comments"></i> Chat with this Contract Document</h3>
+                                    <p class="sec-subtitle">Ask questions specifically about this agreement (e.g. "What is my exit penalty?", "Can I negotiate Section 3?").</p>
+                                    
+                                    <div class="legal-chatbot-block" data-module="simplifier">
+                                        <div class="chatbot-messages" id="chat-messages-simplifier">
+                                            <div class="message bot">
+                                                <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                                                <div class="message-bubble-wrapper">
+                                                    <div class="message-bubble">I have scanned and segmented your document. You can now chat directly with me about any specific clauses, liabilities, or negotiation terms in it!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="chatbot-input-container">
+                                            <textarea class="chatbot-textarea" placeholder="Ask a question about this contract..." rows="1"></textarea>
+                                            <div class="chatbot-footer-actions">
+                                                <div class="actions-left">
+                                                    <button class="action-icon-btn"><i class="fa-solid fa-paperclip"></i></button>
+                                                    <button class="action-icon-btn"><i class="fa-solid fa-sliders"></i></button>
+                                                    <span class="tokens-pill">10/10</span>
+                                                    <span class="saved-badge"><i class="fa-solid fa-check-double"></i> Saved</span>
+                                                </div>
+                                                <div class="actions-right">
+                                                    <button class="action-icon-btn mic-btn"><i class="fa-solid fa-microphone"></i></button>
+                                                    <button class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Files Grid & Formats -->
+                        <div class="docs-right-panel">
+                            <div class="drop-files-card" id="drop-zone">
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                <span>Drop files here</span>
+                            </div>
+
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <span class="stat-icon files-icon"><i class="fa-regular fa-file"></i></span>
+                                    <strong class="stat-number">0</strong>
+                                    <span class="stat-name">All Files</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-icon fav-icon"><i class="fa-regular fa-star"></i></span>
+                                    <strong class="stat-number">0</strong>
+                                    <span class="stat-name">Favorites</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-icon upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                                    <strong class="stat-number">0</strong>
+                                    <span class="stat-name">Uploaded</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-icon chat-icon"><i class="fa-regular fa-comments"></i></span>
+                                    <strong class="stat-number">0</strong>
+                                    <span class="stat-name">Chat Files</span>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-icon folder-icon"><i class="fa-regular fa-folder"></i></span>
+                                    <strong class="stat-number">0</strong>
+                                    <span class="stat-name">Collections</span>
+                                </div>
+                                <div class="stat-card storage-card">
+                                    <div class="progress-ring">
+                                        <span class="progress-num">0%</span>
+                                    </div>
+                                    <div class="storage-text">
+                                        <strong>0/100</strong>
+                                        <span>MB Used</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="file-types-section">
+                                <h4>FILE TYPES</h4>
+                                <div class="types-grid">
+                                    <div class="type-item type-pdf">
+                                        <i class="fa-regular fa-file-pdf"></i>
+                                        <span>PDF Files</span>
+                                        <strong>0</strong>
+                                    </div>
+                                    <div class="type-item type-word">
+                                        <i class="fa-regular fa-file-word"></i>
+                                        <span>Word Files</span>
+                                        <strong>0</strong>
+                                    </div>
+                                    <div class="type-item type-image">
+                                        <i class="fa-regular fa-file-image"></i>
+                                        <span>Image Files</span>
+                                        <strong>0</strong>
+                                    </div>
+                                    <div class="type-item type-other">
+                                        <i class="fa-regular fa-file-zipper"></i>
+                                        <span>Other Files</span>
+                                        <strong>0</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Toggleable Slide-out Guardrail Console -->
+        <aside class="guardrail-panel" id="guardrail-console">
+            <div class="guardrail-header">
+                <i class="fa-solid fa-user-shield"></i>
+                <div>
+                    <h3>Guardrail Console</h3>
+                    <span>Stateless Safety Middleware Logs</span>
+                </div>
+            </div>
+            
+            <div class="guardrail-status-pill">
+                <span class="active-dot"></span>
+                <span>Active Interception Enabled</span>
+            </div>
+
+            <div class="guardrail-logs" id="guardrail-logs-list">
+                <div class="log-item">
+                    <span class="log-time">System Init</span>
+                    <strong class="log-cat">Database Ingested</strong>
+                    <p class="log-detail">Parsed BNS, POSH Act, Model Tenancy Act, and IT Act data successfully.</p>
+                </div>
+            </div>
+
+            <div class="guardrail-footer">
+                <span class="confidential-text">Compliance Status: ISO / BNS Gated</span>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Hidden File Input for Triggering Upload -->
+    <input type="file" id="real-file-input" style="display: none;" accept=".pdf,.doc,.docx,.txt">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
